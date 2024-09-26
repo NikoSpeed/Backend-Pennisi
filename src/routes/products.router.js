@@ -50,7 +50,19 @@ router.post("/", async (req, res) => {
 })
 
 router.post("/:pid", async (req,res) => {
-    let id = req.params.id
+    let pid = req.params.id
+    try {
+        const product = req.body
+        const result = await manager.updateProduct(pid, product);
+        
+        if (!updateProduct)
+            return res.status(404).send("ID no encontrado")
+
+        return res.status(200).send(`El producto ${result.title} fue actualizado`)
+    }
+    catch (error) {
+        res.status(500).send("Error del servidor")
+    }
 })
 
 
