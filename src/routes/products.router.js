@@ -49,7 +49,7 @@ router.post("/", async (req, res) => {
     }
 })
 
-router.post("/:pid", async (req,res) => {
+router.get("/:pid", async (req,res) => {
     let pid = req.params.id
     try {
         const product = req.body
@@ -66,7 +66,7 @@ router.post("/:pid", async (req,res) => {
 })
 
 
-router.post("/:pid", async (req,res) =>{
+router.get("/:pid", async (req,res) =>{
     let id = req.params.id
 
     try {  
