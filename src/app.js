@@ -6,6 +6,10 @@ const exphbs = require("express-handlebars")
 const socket = require("socket.io")
 const app = express()
 const PUERTO = 8080
+import mongoose from "mongoose"
+
+mongoose.connect("mongodb+srv://CoderNiko:battle@cluster0.czuqe.mongodb.net/Test?retryWrites=true&w=majority&appName=Cluster0")
+    
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -31,7 +35,6 @@ const manager = new ProductManager("./src/data/productos.json")
 
 io.on("connection", async(socket) => {
     console.log("Cliente conectado")
-
     socket.emit("productos", await manager.getProducts())
 })
 

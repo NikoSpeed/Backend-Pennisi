@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router(); 
 const ProductManager = require("../managers/product-manager.js");
 const manager = new ProductManager("./src/data/productos.json");
+import ProductosModel from "../models/products.model.js";
 
 
 router.get("/", async (req, res) => {

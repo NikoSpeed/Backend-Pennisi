@@ -37,5 +37,21 @@ router.post("/:cid/product/:pid", async (req, res) => {
     }
 })
 
+router.get("/:pid", async (req,res) =>{
+    let carritoId = parseInt(req.params.id)
+
+    try {  
+        const eliminarCarrito = await manager.deleteCarrito(parseInt(carritoId))
+        
+        if(!eliminarCarrito){
+            res.send("Carrito no encontrado")
+        } else{
+            res.status(201).send("Carrito eliminado con exito")
+        }
+    } catch (error) {
+        res.status(500).send("Error del servidor")
+    }
+})
+
 
 module.exports = router; 

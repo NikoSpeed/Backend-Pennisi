@@ -8,3 +8,14 @@
         <p>{{this.stock}}</p>
     </div>
 {{/each}}
+
+<p> Pagina {{currentPage}} de {{totalPages}} </p>
+
+{{#if hasPrevPage}}
+    <a href="productos?page={{prevPage}}"> Anterior </a>
+{{/if}}
+
+{{#if hasNextPage}}
+    <a href="productos?page={{nextPage}}"> Siguiente </a>
+{{/if}}
+

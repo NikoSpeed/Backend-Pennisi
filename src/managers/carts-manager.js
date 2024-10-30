@@ -61,6 +61,25 @@ class CartManager {
       return carrito
     }
 
+    async deleteCarrito(id) {
+        try {
+            const carrito = await this.leerArchivo(); 
+
+            const index = carrito.findIndex( item => item.id === id); 
+
+            if(index !== -1) {
+                carrito.splice(index, 1); 
+                await this.guardarArchivo(carrito); 
+                console.log("Carrito eliminado"); 
+            } else {
+                console.log("No se encuentra el carrito"); 
+            }
+        } catch (error) {
+            console.log("Tenemos un error al eliminar carritos"); 
+        }
+    }
+
+
 }
 
 module.exports = CartManager; 
